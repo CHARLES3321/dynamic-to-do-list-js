@@ -1,3 +1,6 @@
+document.addEventListener('DOMContentLoaded', ()=>
+{
+
 const inputField=
 document.getElementById('task-input');
 const addButton=
@@ -6,7 +9,8 @@ const taskList=
 document.getElementById('task-list');
 
 
-function addTask() {
+addButton.addEventListener('click', ()=>{
+    
     const taskText= inputField.ariaValueMax.trim();
     if( taskText !==) {
         const li= document.createElement('li');
@@ -25,7 +29,14 @@ function addTask() {
 
         inputField.value= ;
     }
-}
+    });
 
-addButton.addEventListener('click', addTask);
+
+inputField.addEventListener('keypress',
+    (event) =>{
+        if(eventKey === 'Enter') {
+            addButton.click();
+        }
+    });
+});
 
