@@ -35,8 +35,9 @@ addButton.addEventListener('click', ()=>{
     }
     });
 
-
-
+addButton.addEventListener('click', ()=>{
+    addTask();
+});
 inputField.addEventListener('keypress',
     (event) =>{
         if(eventKey === 'Enter') {
