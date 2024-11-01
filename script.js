@@ -9,42 +9,62 @@ const taskList=
 document.getElementById('task-list');
 
 
+const storedTasks=
+JSON.parse(localStorage.getItem('tasks') || '[]');
+storedTasks.forEach(taskText => 
+    addTask(taskText, false));
+
+
+
 addButton.addEventListener('click', ()=>{
-    function addTask() {
     const taskText= taskInput.value.trim();
-    if( taskText !==) {
-        alert('Task added Successfully.');
-    } else {
-        const li= document.createElement('li');
-        li.textContent= taskText};
+    if( taskText ) {
+        addTask(taskText);
+        taskInput.value= ``;
+    }
+});
+
+
+
+    function addTask(taskText, save = true) {
+        const taskElement=
+        document.createElement('li');
+        taskElement.textContent= taskText;
+    
 
         const removeButton=
         document.createElement('button');
         removeButton.textContent= 'Remove';
-        removeButton.classList.add('remove-btn');
-
         removeButton.addEventListener('click', ()=>{
-            taskList.removeChild(li);
+            taskList.removeChild(taskElement);
+            removeTask(taskText);
         });
 
+        taskElement.appendChild(removeButton);
+        taskList.appendChild(taskElement);
 
-        li.appendChild(removeButton);
-        taskList.appendChild(li);
-
-        inputField.value= ;
-    }
-    });
-
-addButton.addEventListener('click', ()=>{
-    addTask();
-});
-inputField.addEventListener('keypress',
-    (event) =>{
-        if(eventKey === 'Enter') {
-            addButton.click();
-       
+        if(save) {
+            const storedTasks=
+            JSON.parse(localStorage.getItem('tasks') || '[]');
+            storedTasks.push(taskText);
+            localStorage.setItem('tasks',
+                JSON.stringify(storedTasks));
+            
         }
+    }
+    
+
+    function removeTask(taskText) {
+        const storedTasks=
+        JSON.parse(localStorage.getItem('tasks') || '[]');
+        const newTasks= storedTasks.filter(task =>
+            task !== taskText);
+            localStorage.setItem('tasks',
+                JSON.stringify(newTasks));
+            }
+            
+        
     });
-});
 
-
+    
+    
