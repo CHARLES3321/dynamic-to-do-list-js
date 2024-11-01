@@ -11,7 +11,7 @@ document.getElementById('task-list');
 
 addButton.addEventListener('click', ()=>{
     
-    const taskText= inputField.ariaValueMax.trim();
+    const taskText= taskInput.value.trim();
     if( taskText !==) {
         const li= document.createElement('li');
         li.textContent= taskText;
