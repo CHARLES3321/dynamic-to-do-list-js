@@ -21,6 +21,8 @@ addButton.addEventListener('click', ()=>{
         const removeButton=
         document.createElement('button');
         removeButton.textContent= 'Remove';
+        removeButton.classList.add('remove-btn');
+
         removeButton.addEventListener('click', ()=>{
             taskList.removeChild(li);
         });
