@@ -62,6 +62,14 @@ addButton.addEventListener('click', ()=>{
             localStorage.setItem('tasks',
                 JSON.stringify(newTasks));
             }
+
+            function loadTasks() {
+                const storedTasks =
+                JSON.parse(localStorage.getItem('tasks') || '[]');
+                storedTasks.forEach(taskText =>
+                    addTask(taskText, false)
+                );
+            }
             
         
     });
